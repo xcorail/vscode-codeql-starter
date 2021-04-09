@@ -6,5 +6,6 @@
   "postCreateCommand": "git submodule init && git submodule update --recursive",
   "settings": {
     "codeQL.runningQueries.memory": 2048
-  }
+  },
+  "mounts": ["source=/usr/local/share/vscode-codeql-share,target=/workspace/vscode-codeql-share,type=volume"]
  }
