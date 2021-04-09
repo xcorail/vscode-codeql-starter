@@ -7,5 +7,5 @@
   "settings": {
     "codeQL.runningQueries.memory": 2048
   },
-  "mounts": ["source=/usr/local/share/vscode-codeql-share,target=/workspace/vscode-codeql-share,type=volume"]
+  "mounts": ["source=${localWorkspaceFolder}/vscode-codeql-share,target=/usr/local/share/vscode-codeql-share,type=volume"]
  }
