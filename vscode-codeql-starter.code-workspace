@@ -26,6 +26,7 @@
 		}
 	],
 	"settings": {
-		"omnisharp.autoStart": false
+		"omnisharp.autoStart": false,
+		"codeQL.runningQueries.autoSave": true
 	}
 }
