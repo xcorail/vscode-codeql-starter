@@ -37,4 +37,4 @@ class ErrorCheck extends IfStmt {
 from  ErrorCheck ec
 where not ec.getErrorHandlingBranch().getAStmt() instanceof ReturnStmt
     and ec.isAuthNResult()
-select ec
+select ec, "This error check doesn't return."
