@@ -12,9 +12,9 @@ class MyDataFlow extends DataFlow::Configuration {
     }
 }
 
-// DataFlow::Node getSink() {
-//     exists(MyDataFlow config, DataFlow::Node sink | config.hasFlow(_, sink) | result = sink)
-// }
+DataFlow::Node getSink() {
+    exists(MyDataFlow config, DataFlow::Node sink | config.hasFlow(_, sink) | result = sink)
+}
 
 class ErrorCheck extends IfStmt {
     ErrorCheck () {
