@@ -12,7 +12,7 @@ class MyDataFlow extends DataFlow::Configuration {
     }
 }
 
-DataFlow::Node getSink() {
+DataFlow::Node getASink() {
     exists(MyDataFlow config, DataFlow::Node sink | config.hasFlow(_, sink) | result = sink)
 }
 
@@ -27,14 +27,12 @@ class ErrorCheck extends IfStmt {
         else result = this.getElse()
     }
 
-    predicate isAuthNResult () {
-        exists(MyDataFlow config, DataFlow::Node sink | 
-            config.hasFlow(_, sink) and 
-            sink.asExpr() = this.getCond().(EqualityTestExpr).getAnOperand()) 
+    predicate isCheckingAuthNResult () {
+        this.getCond().(EqualityTestExpr).getAnOperand() = getASink().asExpr()
     }
 }
 
 from  ErrorCheck ec
-where not ec.getErrorHandlingBranch().getAStmt() instanceof ReturnStmt
-    and ec.isAuthNResult()
+where ec.isCheckingAuthNResult() and
+    not ec.getErrorHandlingBranch().getAStmt() instanceof ReturnStmt
 select ec, "This error check doesn't return."
