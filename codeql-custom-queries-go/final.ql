@@ -4,7 +4,8 @@ class MyDataFlow extends DataFlow::Configuration {
     MyDataFlow() { this = "AuthNCheck" }
     
     override predicate isSource (DataFlow::Node source) {
-        source = any(DataFlow::CallNode cn | cn.getTarget().hasQualifiedName("github.com/minio/minio/cmd", "isReqAuthenticated")).getResult()
+        source = any(DataFlow::CallNode cn | 
+            cn.getTarget().hasQualifiedName("github.com/minio/minio/cmd", "isReqAuthenticated")).getResult()
     }
 
     override predicate isSink(DataFlow::Node sink) {
